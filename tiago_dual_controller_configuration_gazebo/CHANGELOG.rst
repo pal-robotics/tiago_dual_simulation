@@ -2,6 +2,14 @@
 Changelog for package tiago_dual_controller_configuration_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'add_robotiq_epick_gripper' into 'erbium-devel'
+  Add config files for gazebo hardware
+  See merge request robots/tiago_dual_simulation!17
+* Add config files for gazebo hardware
+* Contributors: saikishor, thomaspeyrucain
+
 2.2.4 (2021-11-25)
 ------------------
 * Merge branch 'fix-omni-base' into 'erbium-devel'
