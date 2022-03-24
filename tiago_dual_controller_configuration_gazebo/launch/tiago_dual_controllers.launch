@@ -12,10 +12,22 @@
     <arg name="use_moveit_camera" default="false"/>
     <arg name="robot_namespace"         default=""/>
     <arg name="base_type_suffix" default=""/>
+
+    <arg name="ee_left_suffix" value="$(eval (end_effector_left if end_effector_left else 'no-ee'))"/>
+    <arg name="ee_right_suffix" value="$(eval (end_effector_right if end_effector_right else 'no-ee'))"/>
+
+
     <include file="$(find tiago_dual_controller_configuration_gazebo)/launch/default_controllers.launch">
         <arg name="robot_namespace" value="$(arg robot_namespace)"/>
         <arg name="base_type_suffix"  value="$(arg base_type_suffix)"/>
     </include>
+
+
+
+    <!-- Override goal tolerance for arm_2_joint in case of no endeffector -->
+    <param name="/arm_left_controller/constraints/arm_left_2_joint/goal" value="0.2" if="$(eval ee_left_suffix == 'no-ee')"/>
+    <param name="/arm_right_controller/constraints/arm_right_2_joint/goal" value="0.2" if="$(eval ee_right_suffix == 'no-ee')"/>
+
     <include file="$(find tiago_controller_configuration)/launch/imu_controller.launch"/>
     <group if="$(eval ft_sensor_left != 'false' or ft_sensor_right != 'false')">
         <include file="$(find tiago_controller_configuration)/launch/force_torque_controller.launch"/>
