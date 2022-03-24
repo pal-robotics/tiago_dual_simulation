@@ -17,9 +17,8 @@
 <arg name="file_suffix" value="$(eval 
               (('no-arm-left' if not arm_left else (end_effector_left if end_effector_left else 'no-ee')+ ('_' +  ft_sensor_left if ft_sensor_left else '')) + '_'  + ('no-arm-right' if not arm_right else (end_effector_right  if end_effector_right else 'no-ee') + ('_' +  ft_sensor_right if ft_sensor_right else ''))))"/>
 
- <arg name="ee_left_suffix" value="$(eval (end_effector_left if end_effector_left else 'no-ee'))"/>
-  <arg name="ee_right_suffix" value="$(eval (end_effector_right if end_effector_right else 'no-ee'))"/>
-
+<arg name="ee_left_suffix" value="$(eval (end_effector_left if end_effector_left else 'no-ee'))"/>
+<arg name="ee_right_suffix" value="$(eval (end_effector_right if end_effector_right else 'no-ee'))"/>
   <rosparam ns="pal_robot_info" subst_value="true">
     type: "tiago_dual"
     arm: True
@@ -35,6 +34,10 @@
 
   <!-- PID gains -->
   <rosparam command="load" file="$(find tiago_dual_controller_configuration_gazebo)/config/pids.yaml"/>
+
+  <!-- Override PID gain for arm_7_joint for right or left arm in case of no end-effector -->
+  <param name="gains/arm_left_7_joint/p" value="10" if="$(eval ee_left_suffix == 'no-ee')"/>
+  <param name="gains/arm_right_7_joint/p" value="10" if="$(eval ee_right_suffix == 'no-ee')"/>
 
   <rosparam command="load" file="$(find tiago_dual_controller_configuration_gazebo)/config/hardware_gazebo/tiago_dual_pal_hardware_gazebo_$(arg file_suffix).yaml"/>
 
