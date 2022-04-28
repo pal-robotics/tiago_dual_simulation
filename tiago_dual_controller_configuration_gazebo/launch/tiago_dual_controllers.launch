@@ -16,7 +16,6 @@
     <arg name="ee_left_suffix" value="$(eval (end_effector_left if end_effector_left else 'no-ee'))"/>
     <arg name="ee_right_suffix" value="$(eval (end_effector_right if end_effector_right else 'no-ee'))"/>
 
-
     <include file="$(find tiago_dual_controller_configuration_gazebo)/launch/default_controllers.launch">
         <arg name="arm_left"  value="$(arg arm_left)"/>
         <arg name="arm_right"  value="$(arg arm_right)"/>
