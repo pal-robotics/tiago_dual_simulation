@@ -12,21 +12,28 @@
     <arg name="use_moveit_camera" default="false"/>
     <arg name="robot_namespace"         default=""/>
     <arg name="base_type_suffix" default=""/>
+
+    <arg name="ee_left_suffix" value="$(eval (end_effector_left if end_effector_left else 'no-ee'))"/>
+    <arg name="ee_right_suffix" value="$(eval (end_effector_right if end_effector_right else 'no-ee'))"/>
+
     <include file="$(find tiago_dual_controller_configuration_gazebo)/launch/default_controllers.launch">
+        <arg name="arm_left"  value="$(arg arm_left)"/>
+        <arg name="arm_right"  value="$(arg arm_right)"/>
         <arg name="robot_namespace" value="$(arg robot_namespace)"/>
         <arg name="base_type_suffix"  value="$(arg base_type_suffix)"/>
     </include>
+
     <include file="$(find tiago_controller_configuration)/launch/imu_controller.launch"/>
     <group if="$(eval ft_sensor_left != 'false' or ft_sensor_right != 'false')">
         <include file="$(find tiago_controller_configuration)/launch/force_torque_controller.launch"/>
     </group>
 
 
-    <include file="$(find tiago_dual_controller_configuration_gazebo)/launch/end_effector_controllers.launch">
+    <include file="$(find tiago_dual_controller_configuration_gazebo)/launch/end_effector_controllers.launch" if="$(eval arm_left)">
       <arg name="end_effector" value="$(arg end_effector_left)"/>
       <arg name="side" value="left"/>
     </include>
-    <include file="$(find tiago_dual_controller_configuration_gazebo)/launch/end_effector_controllers.launch">
+    <include file="$(find tiago_dual_controller_configuration_gazebo)/launch/end_effector_controllers.launch" if="$(eval arm_right)">
       <arg name="end_effector" value="$(arg end_effector_right)"/>
       <arg name="side" value="right"/>
     </include>
@@ -44,6 +51,8 @@
 
     <!-- Motion planning -->
     <include file="$(find tiago_dual_moveit_config)/launch/move_group.launch">
+      <arg name="arm_left"  value="$(arg arm_left)"/>
+      <arg name="arm_right"  value="$(arg arm_right)"/>
       <arg name="end_effector_left" value="$(arg end_effector_left)"/>
       <arg name="end_effector_right" value="$(arg end_effector_right)"/>
       <arg name="ft_sensor_left" value="$(arg ft_sensor_left)"/>
