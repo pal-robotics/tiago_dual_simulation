@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package>
   <name>tiago_dual_controller_configuration_gazebo</name>
-  <version>2.2.5</version>
+  <version>2.3.0</version>
   <description>The tiago_dual_controller_configuration_gazebo package</description>
   <maintainer email="victor.lopez@pal-robotics.com">Victor Lopez</maintainer>
   <author email="victor.lopez@pal-robotics.com">Victor Lopez</author>
