@@ -2,6 +2,24 @@
 Changelog for package tiago_dual_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'no-end-effector-bugfix' into 'erbium-devel'
+  No end effector bugfix
+  See merge request robots/tiago_dual_simulation!18
+* file_suffix consistency
+* Merge branch 'no-end-effector-bugfix' of gitlab:robots/tiago_dual_simulation into no-end-effector-bugfix
+* bools to true
+* Apply 1 suggestion(s) to 1 file(s)
+* merge
+* update for tiago with an arm missing
+* Changing default arg
+* override pid gain and goal tolerance in case of no-ee
+* generate new files
+* override pid gain and goal tolerance in case of no-ee
+* generate new files
+* Contributors: David ter Kuile, saikishor
+
 2.2.5 (2022-03-21)
 ------------------
 

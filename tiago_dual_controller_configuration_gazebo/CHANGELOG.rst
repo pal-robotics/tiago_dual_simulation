@@ -2,6 +2,21 @@
 Changelog for package tiago_dual_controller_configuration_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'no-end-effector-bugfix' into 'erbium-devel'
+  No end effector bugfix
+  See merge request robots/tiago_dual_simulation!18
+* Apply 1 suggestion(s) to 1 file(s)
+* bools to true
+* remove goal tolerance artefact
+* update for tiago with an arm missing
+* override pid gain and goal tolerance in case of no-ee
+* generate new files
+* override pid gain and goal tolerance in case of no-ee
+* generate new files
+* Contributors: David ter Kuile, saikishor
+
 2.2.5 (2022-03-21)
 ------------------
 * Merge branch 'add_robotiq_epick_gripper' into 'erbium-devel'
