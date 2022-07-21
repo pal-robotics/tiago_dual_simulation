@@ -2,6 +2,14 @@
 Changelog for package tiago_dual_controller_configuration_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'add_omni_tiago_dual' into 'erbium-devel'
+  Add base_type to the missing launch files
+  See merge request robots/tiago_dual_simulation!19
+* =Add base_type to the missing launch files
+* Contributors: saikishor, thomaspeyrucain
+
 2.3.0 (2022-05-03)
 ------------------
 * Merge branch 'no-end-effector-bugfix' into 'erbium-devel'
