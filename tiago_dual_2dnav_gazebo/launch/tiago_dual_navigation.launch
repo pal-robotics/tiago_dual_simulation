@@ -66,7 +66,6 @@
       <arg name="localization"   value="$(arg localization)"/>
       <arg name="map"            value="$(arg map)"/>
       <arg name="public_sim"     value="$(arg public_sim)"/>
-      <arg name="is_sim"         value="true"/>
       <arg name="rgbd_sensors"   value="$(arg advanced_navigation)"/>
       <arg name="config_base_path" value="$(arg config_base_path)"/>
       <arg name="base_type" value="$(arg base_type)"/>
