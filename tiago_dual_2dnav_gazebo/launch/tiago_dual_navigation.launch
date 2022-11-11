@@ -23,7 +23,7 @@
   <arg name="global_planner" default="global_planner"/>
   <arg name="local_planner"  default="$(eval 'teb' if (arg('public_sim') or arg('base_type')=='omni_base') else 'pal')"/>
   <arg name="localization"   default="amcl"/>
-  <arg name="map"            default="$(arg world)"/>
+  <arg name="map"            default="$(env HOME)/.pal/tiago_dual_maps/configurations/$(arg world)"/>
   <arg name="config_base_path" default="$(find pal_navigation_cfg_tiago_dual)"/>
 
   <arg name="rviz"     default="true"/>
@@ -37,6 +37,11 @@
   <arg name="sim_sufix" value=""                unless="$(arg public_sim)"/>
 
   <env name="PAL_HOST" value="tiago_dual" />
+
+  <group if="$(arg public_sim)">
+    <node name="update_maps_link" pkg="pal_navigation_sm" type="base_maps_symlink.sh" args="tiago_dual_maps"/>
+  </group>
+
 
   <group ns="$(arg namespace)">
 
