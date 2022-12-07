@@ -14,7 +14,7 @@
     <arg name="base_type" default="pmb2"/>
     <arg name="base_type_suffix" default=""/>
     <arg name="advanced_grasping" default="false"/> <!-- Requires extra software from PAL Robotics -->
-    <arg name="enable_moveit_camera" value="true" if="$(eval arg('use_moveit_camera') or arg('advanced_grasping'))"/>
+    <arg name="enable_moveit_camera" value="$(eval arg('use_moveit_camera') or arg('advanced_grasping'))" />
 
     <arg name="ee_left_suffix" value="$(eval (end_effector_left if end_effector_left else 'no-ee'))"/>
     <arg name="ee_right_suffix" value="$(eval (end_effector_right if end_effector_right else 'no-ee'))"/>
