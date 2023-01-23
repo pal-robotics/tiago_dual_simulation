@@ -2,6 +2,14 @@
 Changelog for package tiago_dual_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'robot-state-publisher' into 'erbium-devel'
+  update to robot_state_publisher
+  See merge request robots/tiago_dual_simulation!22
+* update to robot_state_publisher
+* Contributors: David ter Kuile, Jordan Palacios
+
 2.3.1 (2022-07-21)
 ------------------
 * Merge branch 'add_omni_tiago_dual' into 'erbium-devel'

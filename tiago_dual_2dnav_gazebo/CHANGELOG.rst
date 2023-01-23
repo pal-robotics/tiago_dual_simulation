@@ -2,6 +2,9 @@
 Changelog for package tiago_dual_2dnav_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 2.3.1 (2022-07-21)
 ------------------
 
