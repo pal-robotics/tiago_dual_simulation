@@ -2,6 +2,9 @@
 Changelog for package tiago_dual_simulation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 2.3.2 (2023-01-23)
 ------------------
 

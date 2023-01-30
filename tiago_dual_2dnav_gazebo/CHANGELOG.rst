@@ -2,6 +2,16 @@
 Changelog for package tiago_dual_2dnav_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'feat/map-manager' into 'erbium-devel'
+  move to map manager
+  See merge request robots/tiago_dual_simulation!20
+* support to public simulation
+* simplified launch files
+* move to map manager
+* Contributors: antoniobrandi
+
 2.3.2 (2023-01-23)
 ------------------
 
