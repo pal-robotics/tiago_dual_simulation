@@ -2,8 +2,8 @@
 Changelog for package tiago_dual_simulation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.3.4 (2023-01-31)
+------------------
 * Merge branch 'fix/missing-deps' into 'erbium-devel'
   Update package.xml
   See merge request robots/tiago_dual_simulation!23
