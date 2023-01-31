@@ -2,6 +2,9 @@
 Changelog for package tiago_dual_2dnav_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 2.3.3 (2023-01-30)
 ------------------
 * Merge branch 'feat/map-manager' into 'erbium-devel'
