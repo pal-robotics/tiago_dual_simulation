@@ -2,6 +2,14 @@
 Changelog for package tiago_dual_2dnav_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'feat/share-mmap' into 'erbium-devel'
+  deprecating map_configuration_server
+  See merge request robots/tiago_dual_simulation!24
+* deprecating map_configuration_server
+* Contributors: antoniobrandi
+
 2.3.4 (2023-01-31)
 ------------------
 
