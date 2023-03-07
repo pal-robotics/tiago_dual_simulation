@@ -2,6 +2,15 @@
 Changelog for package tiago_dual_2dnav_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'feat/stvl-obstacle-rgbd-layer' into 'erbium-devel'
+  added floor filters rgbd
+  See merge request robots/tiago_dual_simulation!25
+* added check camera_model
+* added floor filters rgbd
+* Contributors: andreacapodacqua, sergiomoyano
+
 2.3.5 (2023-02-23)
 ------------------
 * Merge branch 'feat/share-mmap' into 'erbium-devel'
