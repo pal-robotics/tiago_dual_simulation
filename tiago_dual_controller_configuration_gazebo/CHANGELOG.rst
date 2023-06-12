@@ -2,6 +2,17 @@
 Changelog for package tiago_dual_controller_configuration_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'control-period-reduced' into 'erbium-devel'
+  updated pids for the reduction of the control period
+  See merge request robots/tiago_dual_simulation!27
+* pids updated after a test for all the motions
+* updated joint 1 pid
+* updated pids for the reduction of the control period reported in the
+  gazebo simulation
+* Contributors: Sai Kishor Kothakota, ileniaperrella
+
 2.3.7 (2023-03-09)
 ------------------
 
