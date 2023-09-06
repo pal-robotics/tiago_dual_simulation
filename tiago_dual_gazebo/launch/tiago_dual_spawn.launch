@@ -22,6 +22,8 @@
     type: "tiago_dual"
     arm_left: $(arg arm_left)
     arm_right: $(arg arm_right)
+    arm_left_type: "tiago_arm"
+    arm_right_type: "tiago_arm"
     end_effector_left: $(arg ee_left_suffix)
     end_effector_right: $(arg ee_right_suffix)
     ft_sensor_left: $(arg ft_sensor_left)
