@@ -2,8 +2,8 @@
 Changelog for package tiago_dual_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.3.9 (2023-09-22)
+------------------
 * Merge branch 'arm-type-param' into 'erbium-devel'
   Add arm type to pal_robot_info
   See merge request robots/tiago_dual_simulation!30
