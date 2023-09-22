@@ -2,6 +2,18 @@
 Changelog for package tiago_dual_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'arm-type-param' into 'erbium-devel'
+  Add arm type to pal_robot_info
+  See merge request robots/tiago_dual_simulation!30
+* Add arm type to pal_robot_info
+* Merge branch 'davidterkuile-erbium-devel-patch-62924' into 'erbium-devel'
+  Remove extra gz paths that were move to pal_gazebo_worlds
+  See merge request robots/tiago_dual_simulation!28
+* Remove extra gz paths that were move to pal_gazebo_worlds
+* Contributors: David ter Kuile, Jordan Palacios, Sai Kishor Kothakota, davidterkuile
+
 2.3.8 (2023-06-12)
 ------------------
 

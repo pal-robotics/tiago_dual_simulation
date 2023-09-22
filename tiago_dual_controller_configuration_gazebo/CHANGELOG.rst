@@ -2,6 +2,15 @@
 Changelog for package tiago_dual_controller_configuration_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'updated-pids-joint2' into 'erbium-devel'
+  Updated pid Joint2 to fix tolerance violation
+  See merge request robots/tiago_dual_simulation!29
+* Updated joint limits to be safter
+* Updated pid valued to fix tolerance violation
+* Contributors: Sai Kishor Kothakota, sergiacosta
+
 2.3.8 (2023-06-12)
 ------------------
 * Merge branch 'control-period-reduced' into 'erbium-devel'
