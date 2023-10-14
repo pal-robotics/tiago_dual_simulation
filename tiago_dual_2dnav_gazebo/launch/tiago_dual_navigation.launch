@@ -25,6 +25,8 @@
   <arg name="localization"   default="amcl"/>
   <arg name="map"            default="$(env HOME)/.pal/tiago_dual_maps/configurations/$(arg world)"/>
   <arg name="config_base_path" default="$(find pal_navigation_cfg_tiago_dual)"/>
+  
+  <arg name="use_moveit_camera" default="false"/>
 
   <arg name="rviz"     default="true"/>
   <arg name="gzclient" default="true"/>
@@ -61,6 +63,7 @@
       <arg name="recording"  value="$(arg recording)"/>
       <arg name="extra_gazebo_args" value="$(arg extra_gazebo_args)"/>
       <arg name="base_type" value="$(arg base_type)"/>
+      <arg name="use_moveit_camera" default="$(arg use_moveit_camera)"/>
     </include>
 
     <include file="$(find tiago_2dnav_gazebo)/launch/navigation.launch">
