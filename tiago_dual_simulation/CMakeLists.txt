@@ -1,4 +1,5 @@
-cmake_minimum_required(VERSION 2.8.3)
+cmake_minimum_required(VERSION 3.5)
 project(tiago_dual_simulation)
-find_package(catkin REQUIRED)
-catkin_metapackage()
+find_package(ament_cmake REQUIRED)
+ament_package()
+
