@@ -2,6 +2,19 @@
 Changelog for package tiago_dual_controller_configuration_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'add-moveit-capability-loader' into 'erbium-devel'
+  Add capability unless public sim
+  See merge request robots/tiago_dual_simulation!21
+* Ensure enable_camera argument is set correctly
+* Set enable_moveit_camera arg in tiago_controllers.launch
+* set use_moveit_camera arg in tiago_controllers correct
+* Add advanced_grasping launch arguments
+* Add moveit sensor manager param to move_group
+* Add capability unless public sim
+* Contributors: David ter Kuile, Sai Kishor Kothakota
+
 2.3.9 (2023-09-22)
 ------------------
 * Merge branch 'updated-pids-joint2' into 'erbium-devel'
