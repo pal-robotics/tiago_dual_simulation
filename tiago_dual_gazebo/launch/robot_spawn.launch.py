@@ -39,11 +39,11 @@ def generate_launch_description():
 
 
 def declare_launch_arguments(launch_description: LaunchDescription):
-    model_name = DeclareLaunchArgument(
-        'robot_name', default_value='tiago',
+    robot_name = DeclareLaunchArgument(
+        'robot_name', default_value='tiago_dual',
         description='Gazebo model name'
     )
-    launch_description.add_action(model_name)
+    launch_description.add_action(robot_name)
     return
 
 
@@ -51,7 +51,8 @@ def declare_actions(launch_description: LaunchDescription):
 
     robot_entity = Node(package='gazebo_ros', executable='spawn_entity.py',
                         arguments=['-topic', 'robot_description',
-                                   '-entity', LaunchConfiguration('robot_name'),
+                                   '-entity', LaunchConfiguration(
+                                       'robot_name'),
                                    # LaunchConfiguration('gzpose'),
                                    ],
                         output='screen')
