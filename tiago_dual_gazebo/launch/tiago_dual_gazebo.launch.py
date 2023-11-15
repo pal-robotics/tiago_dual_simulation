@@ -98,18 +98,22 @@ def declare_launch_arguments() -> Dict:
 
 def declare_actions(launch_description: LaunchDescription, launch_args: Dict):
 
-    packages = ['tiago_dual_description', 'pmb2_description',
-                'hey5_description', 'pal_gripper_description']
+    packages = ['tiago_dual_description', 'tiago_description',
+                'pmb2_description', 'hey5_description', 'pal_gripper_description']
+
     model_path = get_model_paths(packages)
-    # resource_path = get_resource_paths(packages)
-    launch_description.add_action(
-        SetEnvironmentVariable('GAZEBO_MODEL_PATH', model_path))
+
+    gazebo_model_path_env_var = SetEnvironmentVariable(
+        'GAZEBO_MODEL_PATH', model_path)
 
     gazebo = include_scoped_launch_py_description(
         pkg_name='pal_gazebo_worlds',
         paths=['launch', 'pal_gazebo.launch.py'],
+        launch_args=[launch_args['world_name'], gazebo_model_path_env_var],
         launch_configurations={
-            "world_name":  LaunchConfiguration("world_name")
+            "world_name":  LaunchConfiguration("world_name"),
+            "model_paths": packages,
+            "resource_paths": packages,
         })
 
     launch_description.add_action(gazebo)
