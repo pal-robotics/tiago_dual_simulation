@@ -154,12 +154,12 @@ def declare_actions(launch_description: LaunchDescription, launch_args: Dict):
 
     launch_description.add_action(tiago_bringup)
 
-    # tuck_arm = Node(package='tiago_dual_gazebo',
-    #                 executable='tuck_arm.py',
-    #                 emulate_tty=True,
-    #                 output='both')
+    tuck_arm = Node(package='tiago_gazebo',
+                    executable='tuck_arm.py',
+                    emulate_tty=True,
+                    output='both')
 
-    # launch_description.add_action(tuck_arm)
+    launch_description.add_action(tuck_arm)
 
     return
 
