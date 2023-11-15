@@ -40,7 +40,7 @@ def generate_launch_description():
 
 def declare_launch_arguments(launch_description: LaunchDescription):
     robot_name = DeclareLaunchArgument(
-        'robot_name', default_value='tiago_dual',
+        'robot_name',
         description='Gazebo model name'
     )
     launch_description.add_action(robot_name)
