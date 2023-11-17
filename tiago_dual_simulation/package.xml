@@ -7,7 +7,9 @@
   <maintainer email="david.terkuile@pal-robotics.com">David ter Kuile</maintainer>
   <author email="victor.lopez@pal-robotics.com">Victor Lopez</author>
   <license>Apache License 2.0</license>
-  
+
+  <url type="website">https://github.com/pal-robotics/tiago_dual_simulation</url>
+
   <buildtool_depend>ament_cmake</buildtool_depend>
 
   <exec_depend>tiago_dual_gazebo</exec_depend>
