@@ -19,6 +19,7 @@ from ament_index_python.packages import get_package_prefix
 
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument, SetEnvironmentVariable
+from launch.actions import LogInfo
 
 from launch.conditions import IfCondition
 from launch.substitutions import LaunchConfiguration
@@ -26,168 +27,52 @@ from launch.substitutions import LaunchConfiguration
 from launch_pal.include_utils import include_scoped_launch_py_description
 
 from launch_ros.actions import Node
+from launch_pal.arg_utils import LaunchArgumentsBase, launch_arg_factory
+from dataclasses import dataclass
+
+
+@dataclass(frozen=True)
+class ArgumentDeclaration(LaunchArgumentsBase):
+    navigation: DeclareLaunchArgument = DeclareLaunchArgument(
+        name='navigation',
+        default_value='False',
+        description='Specify if launching Navigation2')
+
+    moveit: DeclareLaunchArgument = DeclareLaunchArgument(
+        name='moveit',
+        default_value='False',
+        description='Specify if launching MoveIt2')
+
+    world_name: DeclareLaunchArgument = DeclareLaunchArgument(
+        name='world_name',
+        default_value='pal_office',
+        description="Specify world name, we'll convert to full path")
+
+    public_sim: DeclareLaunchArgument = DeclareLaunchArgument(
+        name='public_sim',
+        default_value='False',
+        description="Enable public simulation")
 
 
 def generate_launch_description():
 
-    # @TODO: review pal_gazebo
-    # @TODO: review tiago_spawn
-    # @TODO: simulation_tiago_bringup?
-    # @TODO: pal_pcl_points_throttle_and_filter
-
     # Create the launch description and populate
     ld = LaunchDescription()
+    robot_name = "tiago_dual"
+    has_robot_config = True
+    custom_args = ArgumentDeclaration()
+    launch_args = launch_arg_factory(custom_args,
+                                     has_robot_config=has_robot_config, robot_name=robot_name)
 
-    launch_args = declare_launch_arguments()
-
-    for arg in launch_args.values():
-        ld.add_action(arg)
+    launch_args.add_to_launch_description(ld)
 
     declare_actions(ld, launch_args)
 
     return ld
 
 
-def declare_launch_arguments() -> Dict:
-
-    arg_dict = {}
-
-    robot_name_arg = DeclareLaunchArgument(
-        name='robot_name',
-        default_value='tiago_dual',
-        description='Robot name'
-    )
-    arg_dict[robot_name_arg.name] = robot_name_arg
-
-    arm_right = DeclareLaunchArgument(
-        'arm_type_right',
-        default_value='tiago-arm',
-        description='Which type of the right arm.',
-        choices=['no-arm', 'tiago-arm', 'sea'])
-
-    arg_dict[arm_right.name] = arm_right
-
-    arm_left = DeclareLaunchArgument(
-        'arm_type_left',
-        default_value='tiago-arm',
-        description='Which type of the left arm.',
-        choices=['no-arm', 'tiago-arm', 'sea'])
-
-    arg_dict[arm_left.name] = arm_left
-
-    end_effector_right = DeclareLaunchArgument(
-        'end_effector_right',
-        default_value='pal-gripper',
-        description='End effector model of the right arm.',
-        choices=['pal-gripper', 'pal-hey5', 'custom', 'no-end-effector'])
-
-    arg_dict[end_effector_right.name] = end_effector_right
-
-    end_effector_left = DeclareLaunchArgument(
-        'end_effector_left',
-        default_value='pal-gripper',
-        description='End effector model of the left arm.',
-        choices=['pal-gripper', 'pal-hey5', 'custom', 'no-end-effector'])
-
-    arg_dict[end_effector_left.name] = end_effector_left
-
-    ft_sensor_right = DeclareLaunchArgument(
-        'ft_sensor_right',
-        default_value='schunk-ft',
-        description='FT sensor model. ',
-        choices=['schunk-ft', 'no-ft-sensor'])
-
-    arg_dict[ft_sensor_right.name] = ft_sensor_right
-
-    ft_sensor_left = DeclareLaunchArgument(
-        'ft_sensor_left',
-        default_value='schunk-ft',
-        description='FT sensor model. ',
-        choices=['schunk-ft', 'no-ft-sensor'])
-
-    arg_dict[ft_sensor_left.name] = ft_sensor_left
-
-    wrist_model_right = DeclareLaunchArgument(
-        'wrist_model_right',
-        default_value='wrist-2010',
-        description='Wrist model. ',
-        choices=['wrist-2010', 'wrist-2017'])
-
-    arg_dict[wrist_model_right.name] = wrist_model_right
-
-    wrist_model_left = DeclareLaunchArgument(
-        'wrist_model_left',
-        default_value='wrist-2010',
-        description='Wrist model. ',
-        choices=['wrist-2010', 'wrist-2017'])
-
-    arg_dict[wrist_model_left.name] = wrist_model_left
-
-    camera_model = DeclareLaunchArgument(
-        'camera_model',
-        default_value='orbbec-astra',
-        description='Head camera model. ',
-        choices=['no-camera', 'orbbec-astra', 'orbbec-astra-pro', 'asus-xtion'])
-
-    arg_dict[camera_model.name] = camera_model
-
-    laser_model = DeclareLaunchArgument(
-        'laser_model',
-        default_value='sick-571',
-        description='Base laser model. ',
-        choices=['no-laser', 'sick-571', 'sick-561', 'sick-551', 'hokuyo'])
-
-    arg_dict[laser_model.name] = laser_model
-
-    has_screen = DeclareLaunchArgument(
-        'has_screen',
-        default_value='false',
-        description='Define if the robot has a screen. ',
-        choices=['true', 'false'])
-
-    arg_dict[has_screen.name] = has_screen
-
-    base_type = DeclareLaunchArgument(
-        'base_type',
-        default_value='pmb2',
-        description='Define base type of the robot. ',
-        choices=['pmb2', 'omni_base'])
-
-    arg_dict[base_type.name] = base_type
-
-    navigation_arg = DeclareLaunchArgument(
-        name='navigation',
-        default_value='false',
-        description='Specify if launching Navigation2'
-    )
-    arg_dict[navigation_arg.name] = navigation_arg
-
-    moveit_arg = DeclareLaunchArgument(
-        name='moveit',
-        default_value='false',
-        description='Specify if launching MoveIt2'
-    )
-    arg_dict[moveit_arg.name] = moveit_arg
-
-    world_name_arg = DeclareLaunchArgument(
-        name='world_name',
-        default_value='pal_office',
-        description="Specify world name, we'll convert to full path"
-    )
-    arg_dict[world_name_arg.name] = world_name_arg
-
-    use_sim_time = DeclareLaunchArgument(
-        name='use_sim_time',
-        default_value='True',
-        description="Use sim time"
-    )
-    arg_dict[use_sim_time.name] = use_sim_time
-
-    return arg_dict
-
-
 def declare_actions(launch_description: LaunchDescription, launch_args: Dict):
-
+    robot_name = 'tiago_dual'
     packages = ['tiago_dual_description', 'tiago_description',
                 'pmb2_description', 'hey5_description', 'pal_gripper_description']
 
@@ -199,9 +84,9 @@ def declare_actions(launch_description: LaunchDescription, launch_args: Dict):
     gazebo = include_scoped_launch_py_description(
         pkg_name='pal_gazebo_worlds',
         paths=['launch', 'pal_gazebo.launch.py'],
-        launch_args=[launch_args['world_name'], gazebo_model_path_env_var],
-        launch_configurations={
-            "world_name":  LaunchConfiguration("world_name"),
+        env_vars=[gazebo_model_path_env_var],
+        launch_arguments={
+            "world_name":  launch_args.world_name,
             "model_paths": packages,
             "resource_paths": packages,
         })
@@ -211,10 +96,10 @@ def declare_actions(launch_description: LaunchDescription, launch_args: Dict):
     navigation = include_scoped_launch_py_description(
         pkg_name='tiago_dual_2dnav',
         paths=['launch', 'tiago_dual_sim_nav_bringup.launch.py'],
-        launch_configurations={
-            "robot_name":  LaunchConfiguration("robot_name"),
-            "is_public_sim":  LaunchConfiguration("public_sim"),
-            "laser":  LaunchConfiguration("laser_model")},
+        launch_arguments={
+            "robot_name":  robot_name,
+            "is_public_sim": launch_args.public_sim,
+            "laser":  launch_args.laser_model},
         condition=IfCondition(LaunchConfiguration('navigation')))
 
     launch_description.add_action(navigation)
@@ -222,9 +107,9 @@ def declare_actions(launch_description: LaunchDescription, launch_args: Dict):
     move_group = include_scoped_launch_py_description(
         pkg_name='tiago_dual_moveit_config',
         paths=['launch', 'move_dual_group.launch.py'],
-        launch_configurations={
-            "robot_name": LaunchConfiguration("robot_name"),
-            "use_sim_time": LaunchConfiguration("use_sim_time")},
+        launch_arguments={
+            "robot_name": robot_name,
+            "use_sim_time": 'True'},
         condition=IfCondition(LaunchConfiguration('moveit')))
 
     launch_description.add_action(move_group)
@@ -232,27 +117,26 @@ def declare_actions(launch_description: LaunchDescription, launch_args: Dict):
     robot_spawn = include_scoped_launch_py_description(
         pkg_name='tiago_dual_gazebo',
         paths=['launch', 'robot_spawn.launch.py'],
-        launch_configurations={'robot_name': LaunchConfiguration('robot_name'), })
+        launch_arguments={'robot_name': robot_name, })
 
     launch_description.add_action(robot_spawn)
 
     tiago_bringup = include_scoped_launch_py_description(
         pkg_name='tiago_dual_bringup', paths=['launch', 'tiago_dual_bringup.launch.py'],
-        launch_configurations={
-            'use_sim_time': LaunchConfiguration("use_sim_time"),
-            "robot_name": LaunchConfiguration("robot_name"),
-            "arm_type_right": LaunchConfiguration("arm_type_right"),
-            "arm_type_left": LaunchConfiguration("arm_type_left"),
-            "end_effector_right": LaunchConfiguration("end_effector_right"),
-            "end_effector_left": LaunchConfiguration("end_effector_left"),
-            "ft_sensor_right": LaunchConfiguration("ft_sensor_right"),
-            "ft_sensor_left": LaunchConfiguration("ft_sensor_left"),
-            "wrist_model_right": LaunchConfiguration("wrist_model_right"),
-            "wrist_model_left": LaunchConfiguration("wrist_model_left"),
-            "laser_model": LaunchConfiguration("laser_model"),
-            "camera_model": LaunchConfiguration("camera_model"),
-            "base_type": LaunchConfiguration("base_type"),
-            "has_screen": LaunchConfiguration("has_screen")}
+        launch_arguments={
+            'use_sim_time': 'True',
+            "arm_type_right": launch_args.arm_type_right,
+            "arm_type_left": launch_args.arm_type_left,
+            "end_effector_right": launch_args.end_effector_right,
+            "end_effector_left": launch_args.end_effector_left,
+            "ft_sensor_right": launch_args.ft_sensor_right,
+            "ft_sensor_left": launch_args.ft_sensor_left,
+            "wrist_model_right": launch_args.wrist_model_right,
+            "wrist_model_left": launch_args.wrist_model_left,
+            "laser_model": launch_args.laser_model,
+            "camera_model": launch_args.camera_model,
+            "base_type": launch_args.base_type,
+            "has_screen": launch_args.has_screen}
     )
 
     launch_description.add_action(tiago_bringup)

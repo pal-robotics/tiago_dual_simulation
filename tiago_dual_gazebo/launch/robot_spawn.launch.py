@@ -17,10 +17,19 @@ from launch.actions import DeclareLaunchArgument
 from launch.substitutions import LaunchConfiguration
 
 from launch_ros.actions import Node
+from launch_pal.arg_utils import LaunchArgumentsBase, launch_arg_factory
+from dataclasses import dataclass
+
+
+@dataclass(frozen=True)
+class ArgumentDeclaration(LaunchArgumentsBase):
+    robot_name:  DeclareLaunchArgument = DeclareLaunchArgument(
+        name='robot_name',
+        description='Gazebo model name'
+    )
 
 
 def generate_launch_description():
-
     #    This format doesn't work because we have to expand gzpose into
     #    different args for spawn_entity.py
     #    gz_pose = DeclareLaunchArgument(
@@ -30,24 +39,23 @@ def generate_launch_description():
 
     # @TODO: load PID gains? used in gazebo_ros_control fork
     # @TODO: load tiago_pal_hardware_gazebo
-    ld = LaunchDescription()
 
-    declare_launch_arguments(ld)
-    declare_actions(ld)
+    # Create the launch description and populate
+    ld = LaunchDescription()
+    robot_name = "tiago_dual"
+    has_robot_config = True
+    custom_args = ArgumentDeclaration()
+    launch_args = launch_arg_factory(custom_args,
+                                     has_robot_config=has_robot_config, robot_name=robot_name)
+
+    launch_args.add_to_launch_description(ld)
+
+    declare_actions(ld, launch_args)
 
     return ld
 
 
-def declare_launch_arguments(launch_description: LaunchDescription):
-    robot_name = DeclareLaunchArgument(
-        'robot_name',
-        description='Gazebo model name'
-    )
-    launch_description.add_action(robot_name)
-    return
-
-
-def declare_actions(launch_description: LaunchDescription):
+def declare_actions(launch_description: LaunchDescription, launch_args: LaunchArgumentsBase):
 
     robot_entity = Node(package='gazebo_ros', executable='spawn_entity.py',
                         arguments=['-topic', 'robot_description',
