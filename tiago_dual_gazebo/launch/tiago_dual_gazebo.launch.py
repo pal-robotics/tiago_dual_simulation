@@ -106,7 +106,7 @@ def declare_actions(launch_description: LaunchDescription, launch_args: Dict):
 
     move_group = include_scoped_launch_py_description(
         pkg_name='tiago_dual_moveit_config',
-        paths=['launch', 'move_dual_group.launch.py'],
+        paths=['launch', 'move_group.launch.py'],
         launch_arguments={
             "robot_name": robot_name,
             "use_sim_time": 'True'},
