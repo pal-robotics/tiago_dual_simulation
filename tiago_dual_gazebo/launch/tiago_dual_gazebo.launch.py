@@ -19,7 +19,6 @@ from ament_index_python.packages import get_package_prefix
 
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument, SetEnvironmentVariable
-from launch.actions import LogInfo
 
 from launch.conditions import IfCondition
 from launch.substitutions import LaunchConfiguration
