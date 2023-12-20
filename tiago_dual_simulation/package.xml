@@ -4,6 +4,7 @@
   <version>2.3.9</version>
   <description>The tiago_dual_simulation package</description>
   <author email="david.terkuile@pal-robotics.com">David ter Kuile</author>
+  <maintainer email="david.terkuile@pal-robotics.com">David ter Kuile</maintainer>
   <license>Apache License 2.0</license>
 
   <url type="website">https://github.com/pal-robotics/tiago_dual_simulation</url>
