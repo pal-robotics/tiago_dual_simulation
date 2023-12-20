@@ -3,9 +3,7 @@
   <name>tiago_dual_gazebo</name>
   <version>2.3.9</version>
   <description>The tiago_dual_gazebo package</description>
-  <maintainer email="victor.lopez@pal-robotics.com">Victor Lopez</maintainer>
-  <maintainer email="david.terkuile@pal-robotics.com">David ter Kuile</maintainer>
-  <author email="victor.lopez@pal-robotics.com">Victor Lopez</author>
+  <author email="david.terkuile@pal-robotics.com">David ter Kuile</author>
   <license>Apache License 2.0</license>
 
   <url type="website">https://github.com/pal-robotics/tiago_dual_simulation</url>
