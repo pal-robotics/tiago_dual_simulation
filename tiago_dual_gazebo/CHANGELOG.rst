@@ -2,6 +2,11 @@
 Changelog for package tiago_dual_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Add tiago_dual_moveit_config dependency
+* Contributors: David ter Kuile
+
 4.0.0 (2024-01-18)
 ------------------
 * Merge branch 'ros2-tiago-gazebo' into 'humble-devel'
