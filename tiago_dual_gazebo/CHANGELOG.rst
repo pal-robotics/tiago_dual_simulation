@@ -2,8 +2,8 @@
 Changelog for package tiago_dual_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+4.0.1 (2024-01-18)
+------------------
 * Add tiago_dual_moveit_config dependency
 * Contributors: David ter Kuile
 
