@@ -2,6 +2,31 @@
 Changelog for package tiago_dual_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'ros2-tiago-gazebo' into 'humble-devel'
+  Ros2 tiago gazebo
+  See merge request robots/tiago_dual_simulation!31
+* Add maintainer
+* Remove test dependency
+* Update copyright
+* Update authors
+* CMake version to 3.8
+* remove space for linter
+* update to  new robot argument method
+* Fix flake test
+* fix name of move group launch file
+* Update launch file layout and use new scoped_launch_file function
+* Add website tags
+* Setup declared args  properly
+* Add tuck arm node
+* Update propagation of gazebo env var in launchfile
+* Remove default value to robot spawn.launch
+* LAunch structure read but gazebo not yet workingg
+* Add launch files
+* Only package xml + cmakelist
+* Contributors: David ter Kuile, davidterkuile
+
 2.3.9 (2023-09-22)
 ------------------
 * Merge branch 'arm-type-param' into 'erbium-devel'

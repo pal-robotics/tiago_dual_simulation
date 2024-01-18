@@ -2,6 +2,18 @@
 Changelog for package tiago_dual_simulation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'ros2-tiago-gazebo' into 'humble-devel'
+  Ros2 tiago gazebo
+  See merge request robots/tiago_dual_simulation!31
+* Add maintainer
+* Update authors
+* CMake version to 3.8
+* Add website tags
+* Only package xml + cmakelist
+* Contributors: David ter Kuile, davidterkuile
+
 2.3.9 (2023-09-22)
 ------------------
 
