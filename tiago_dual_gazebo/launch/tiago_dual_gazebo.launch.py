@@ -83,7 +83,7 @@ def generate_launch_description():
 def declare_actions(launch_description: LaunchDescription, launch_args: LaunchArguments):
     robot_name = 'tiago_dual'
     packages = ['tiago_dual_description', 'tiago_description',
-                'pmb2_description', 'hey5_description', 'pal_gripper_description']
+                'pmb2_description', 'pal_hey5_description', 'pal_gripper_description']
 
     model_path = get_model_paths(packages)
 
