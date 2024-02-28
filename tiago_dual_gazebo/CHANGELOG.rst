@@ -2,6 +2,13 @@
 Changelog for package tiago_dual_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Launch MoveIt 2 by default
+* add pal robotiq description package
+* Update package name of pal_hey5
+* Contributors: Aina Irisarri, David ter Kuile, Noel Jimenez
+
 4.0.1 (2024-01-18)
 ------------------
 * Add tiago_dual_moveit_config dependency
