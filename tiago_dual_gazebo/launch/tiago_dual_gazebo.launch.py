@@ -53,8 +53,8 @@ class LaunchArguments(LaunchArgumentsBase):
 
     moveit: DeclareLaunchArgument = DeclareLaunchArgument(
         name='moveit',
-        default_value='False',
-        description='Specify if launching MoveIt2')
+        default_value='True',
+        description='Specify if launching MoveIt 2')
 
     world_name: DeclareLaunchArgument = DeclareLaunchArgument(
         name='world_name',
