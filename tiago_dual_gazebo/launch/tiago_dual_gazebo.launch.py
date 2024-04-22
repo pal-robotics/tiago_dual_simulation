@@ -17,7 +17,7 @@ from os import environ, pathsep
 from ament_index_python.packages import get_package_prefix
 
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument, SetEnvironmentVariable
+from launch.actions import DeclareLaunchArgument, SetEnvironmentVariable, SetLaunchConfiguration
 
 from launch.conditions import IfCondition
 from launch.substitutions import LaunchConfiguration
@@ -25,7 +25,7 @@ from launch.substitutions import LaunchConfiguration
 from launch_pal.include_utils import include_scoped_launch_py_description
 
 from launch_ros.actions import Node
-from launch_pal.arg_utils import LaunchArgumentsBase
+from launch_pal.arg_utils import LaunchArgumentsBase, CommonArgs
 from launch_pal.robot_arguments import TiagoDualArgs
 from dataclasses import dataclass
 
@@ -46,20 +46,9 @@ class LaunchArguments(LaunchArgumentsBase):
     laser_model: DeclareLaunchArgument = TiagoDualArgs.laser_model
     has_screen: DeclareLaunchArgument = TiagoDualArgs.has_screen
 
-    navigation: DeclareLaunchArgument = DeclareLaunchArgument(
-        name='navigation',
-        default_value='False',
-        description='Specify if launching Navigation2')
-
-    moveit: DeclareLaunchArgument = DeclareLaunchArgument(
-        name='moveit',
-        default_value='True',
-        description='Specify if launching MoveIt 2')
-
-    world_name: DeclareLaunchArgument = DeclareLaunchArgument(
-        name='world_name',
-        default_value='pal_office',
-        description="Specify world name, we'll convert to full path")
+    navigation: DeclareLaunchArgument = CommonArgs.navigation
+    moveit: DeclareLaunchArgument = CommonArgs.moveit
+    world_name: DeclareLaunchArgument = CommonArgs.world_name
 
     public_sim: DeclareLaunchArgument = DeclareLaunchArgument(
         name='public_sim',
@@ -81,6 +70,11 @@ def generate_launch_description():
 
 
 def declare_actions(launch_description: LaunchDescription, launch_args: LaunchArguments):
+
+    # Set use_sim_time to True
+    set_sim_time = SetLaunchConfiguration("use_sim_time", "True")
+    launch_description.add_action(set_sim_time)
+
     robot_name = 'tiago_dual'
     packages = ['tiago_dual_description', 'tiago_description',
                 'pmb2_description', 'pal_hey5_description', 'pal_gripper_description',
@@ -119,7 +113,7 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
         paths=['launch', 'move_group.launch.py'],
         launch_arguments={
             "robot_name": robot_name,
-            "use_sim_time": 'True'},
+            "use_sim_time": LaunchConfiguration("use_sim_time")},
         condition=IfCondition(LaunchConfiguration('moveit')))
 
     launch_description.add_action(move_group)
@@ -134,7 +128,7 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
     tiago_bringup = include_scoped_launch_py_description(
         pkg_name='tiago_dual_bringup', paths=['launch', 'tiago_dual_bringup.launch.py'],
         launch_arguments={
-            'use_sim_time': 'True',
+            "use_sim_time": LaunchConfiguration("use_sim_time"),
             "arm_type_right": launch_args.arm_type_right,
             "arm_type_left": launch_args.arm_type_left,
             "end_effector_right": launch_args.end_effector_right,
