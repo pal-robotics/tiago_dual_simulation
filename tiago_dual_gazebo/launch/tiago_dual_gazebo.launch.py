@@ -28,6 +28,7 @@ from launch_ros.actions import Node
 from launch_pal.arg_utils import LaunchArgumentsBase, CommonArgs
 from launch_pal.robot_arguments import TiagoDualArgs
 from dataclasses import dataclass
+from launch_pal.actions import CheckPublicSim
 
 
 @dataclass(frozen=True)
@@ -49,11 +50,7 @@ class LaunchArguments(LaunchArgumentsBase):
     navigation: DeclareLaunchArgument = CommonArgs.navigation
     moveit: DeclareLaunchArgument = CommonArgs.moveit
     world_name: DeclareLaunchArgument = CommonArgs.world_name
-
-    public_sim: DeclareLaunchArgument = DeclareLaunchArgument(
-        name='public_sim',
-        default_value='False',
-        description="Enable public simulation")
+    is_public_sim: DeclareLaunchArgument = CommonArgs.is_public_sim
 
 
 def generate_launch_description():
@@ -74,6 +71,10 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
     # Set use_sim_time to True
     set_sim_time = SetLaunchConfiguration("use_sim_time", "True")
     launch_description.add_action(set_sim_time)
+
+    # Shows error if is_public_sim is not set to True when using public simulation
+    public_sim_check = CheckPublicSim()
+    launch_description.add_action(public_sim_check)
 
     robot_name = 'tiago_dual'
     packages = ['tiago_dual_description', 'tiago_description',
@@ -102,7 +103,7 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
         paths=['launch', 'tiago_dual_sim_nav_bringup.launch.py'],
         launch_arguments={
             "robot_name":  robot_name,
-            "is_public_sim": launch_args.public_sim,
+            "is_public_sim": launch_args.is_public_sim,
             "laser":  launch_args.laser_model},
         condition=IfCondition(LaunchConfiguration('navigation')))
 
