@@ -2,8 +2,8 @@
 Changelog for package tiago_dual_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+4.1.1 (2024-05-09)
+------------------
 * Merge branch 'omm/feat/public_sim' into 'humble-devel'
   Added is_public_sim check
   See merge request robots/tiago_dual_simulation!38
