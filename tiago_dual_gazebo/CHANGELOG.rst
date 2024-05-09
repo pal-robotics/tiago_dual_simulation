@@ -2,6 +2,18 @@
 Changelog for package tiago_dual_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'omm/feat/public_sim' into 'humble-devel'
+  Added is_public_sim check
+  See merge request robots/tiago_dual_simulation!38
+* Added is_public_sim check
+* Merge branch 'omm/fix/launch_standarization' into 'humble-devel'
+  Launch standarization
+  See merge request robots/tiago_dual_simulation!36
+* Launch standarization
+* Contributors: Oscar, davidterkuile, oscarmartinez
+
 4.1.0 (2024-02-28)
 ------------------
 * Launch MoveIt 2 by default
