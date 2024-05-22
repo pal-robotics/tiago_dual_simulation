@@ -147,7 +147,8 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
             "laser_model": launch_args.laser_model,
             "camera_model": launch_args.camera_model,
             "base_type": launch_args.base_type,
-            "has_screen": launch_args.has_screen}
+            "has_screen": launch_args.has_screen,
+            "is_public_sim": launch_args.is_public_sim}
     )
 
     launch_description.add_action(tiago_bringup)
