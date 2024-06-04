@@ -2,8 +2,8 @@
 Changelog for package tiago_dual_controller_configuration_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.3.11 (2024-06-04)
+-------------------
 * Merge branch 'ipe/gazebo-control-period' into 'erbium-devel'
   split the pids for different control periods
   See merge request robots/tiago_dual_simulation!41
