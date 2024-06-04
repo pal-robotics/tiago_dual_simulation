@@ -13,6 +13,11 @@
   <arg name="multi" default=""/>
   <arg name="model_name" default="tiago_dual"/>
   <arg name="base_type" default="pmb2"/>
+  <arg name="slow_control_period" default="false"/>
+  <arg name="gazebo_control_period" value="0.01" if="$(arg slow_control_period)"/>
+  <arg name="gazebo_control_period" value="0.001" unless="$(arg slow_control_period)"/>
+  <arg name="pids_filename" value="$(eval str(arg('gazebo_control_period')).replace('.', ''))" />
+
 <arg name="file_suffix" value="$(eval 
               (('no-arm-left' if not arm_left else (end_effector_left if end_effector_left else 'no-ee') + ('_' +  ft_sensor_left if ft_sensor_left else '')) + '_'  + ('no-arm-right' if not arm_right else (end_effector_right  if end_effector_right else 'no-ee') + ('_' +  ft_sensor_right if ft_sensor_right else ''))))"/>
 
@@ -35,7 +40,7 @@
   </rosparam>
 
   <!-- PID gains -->
-  <rosparam command="load" file="$(find tiago_dual_controller_configuration_gazebo)/config/pids.yaml"/>
+  <rosparam command="load" file="$(find tiago_dual_controller_configuration_gazebo)/config/pids_$(arg pids_filename).yaml"/>
 
   <!-- Override Gazebo Joint PID gain for arm_7_joint for right or left arm in case of no end-effector -->
   <param name="gains/arm_left_7_joint/p" value="10" if="$(eval ee_left_suffix == 'no-ee')"/>
@@ -61,6 +66,7 @@
     <arg name="has_screen" value="$(arg has_screen)"/>
     <arg name="multi"  value="$(arg multi)"/>
     <arg name="base_type"  value="$(arg base_type)"/>
+    <arg name="gazebo_control_period" value="$(arg gazebo_control_period)"/>
   </include>
 
   <!-- Spawn robot in Gazebo -->
