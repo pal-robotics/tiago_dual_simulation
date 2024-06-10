@@ -2,6 +2,18 @@
 Changelog for package tiago_dual_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'dtk/fix/add-public-sim-arg' into 'humble-devel'
+  Pass public sim arg to tiago_bringup launch
+  See merge request robots/tiago_dual_simulation!40
+* Pass public sim arg to tiago_bringup launch
+* Merge branch 'fix/srdf_files' into 'humble-devel'
+  add arguments for moveit
+  See merge request robots/tiago_dual_simulation!39
+* add arguments for moveit
+* Contributors: Aina Irisarri, David ter Kuile, davidterkuile
+
 4.1.1 (2024-05-09)
 ------------------
 * Merge branch 'omm/feat/public_sim' into 'humble-devel'
