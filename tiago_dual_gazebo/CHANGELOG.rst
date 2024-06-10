@@ -2,8 +2,8 @@
 Changelog for package tiago_dual_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+4.1.2 (2024-06-10)
+------------------
 * Merge branch 'dtk/fix/add-public-sim-arg' into 'humble-devel'
   Pass public sim arg to tiago_bringup launch
   See merge request robots/tiago_dual_simulation!40
