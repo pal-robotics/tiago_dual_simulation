@@ -108,6 +108,8 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
             "is_public_sim": launch_args.is_public_sim,
             "laser":  launch_args.laser_model,
             'slam': launch_args.slam,
+            'world_name': launch_args.world_name,
+            'use_sim_time': LaunchConfiguration('use_sim_time'),
         },
         condition=IfCondition(LaunchConfiguration('navigation')))
 
