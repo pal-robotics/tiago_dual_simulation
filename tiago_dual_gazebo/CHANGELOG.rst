@@ -2,6 +2,12 @@
 Changelog for package tiago_dual_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Add missing navigation related launch arguments
+* Add slam argument for navigation
+* Contributors: Noel Jimenez
+
 4.1.3 (2024-06-26)
 ------------------
 * Merge branch 'dtk/move-robot-args' into 'humble-devel'
