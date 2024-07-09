@@ -49,6 +49,7 @@ class LaunchArguments(LaunchArgumentsBase):
     has_screen: DeclareLaunchArgument = TiagoDualArgs.has_screen
 
     navigation: DeclareLaunchArgument = CommonArgs.navigation
+    slam: DeclareLaunchArgument = CommonArgs.slam
     moveit: DeclareLaunchArgument = CommonArgs.moveit
     world_name: DeclareLaunchArgument = CommonArgs.world_name
     is_public_sim: DeclareLaunchArgument = CommonArgs.is_public_sim
@@ -105,7 +106,11 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
         launch_arguments={
             "robot_name":  robot_name,
             "is_public_sim": launch_args.is_public_sim,
-            "laser":  launch_args.laser_model},
+            "laser":  launch_args.laser_model,
+            'slam': launch_args.slam,
+            'world_name': launch_args.world_name,
+            'use_sim_time': LaunchConfiguration('use_sim_time'),
+        },
         condition=IfCondition(LaunchConfiguration('navigation')))
 
     launch_description.add_action(navigation)
