@@ -2,8 +2,8 @@
 Changelog for package tiago_dual_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+4.1.4 (2024-07-09)
+------------------
 * Add missing navigation related launch arguments
 * Add slam argument for navigation
 * Contributors: Noel Jimenez
