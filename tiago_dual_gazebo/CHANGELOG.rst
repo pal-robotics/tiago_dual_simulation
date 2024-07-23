@@ -2,6 +2,11 @@
 Changelog for package tiago_dual_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* add tuck arm arg and condition
+* Contributors: sergiacosta
+
 4.1.4 (2024-07-09)
 ------------------
 * Add missing navigation related launch arguments
