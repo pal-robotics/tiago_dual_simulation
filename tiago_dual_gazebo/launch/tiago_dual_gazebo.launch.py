@@ -38,6 +38,8 @@ class LaunchArguments(LaunchArgumentsBase):
     base_type: DeclareLaunchArgument = TiagoDualArgs.base_type
     arm_type_right: DeclareLaunchArgument = TiagoDualArgs.arm_type_right
     arm_type_left: DeclareLaunchArgument = TiagoDualArgs.arm_type_left
+    arm_motor_model: DeclareLaunchArgument = TiagoDualArgs.arm_motor_model
+    arm_motor_model_left: DeclareLaunchArgument = TiagoDualArgs.arm_motor_model_left
     end_effector_right: DeclareLaunchArgument = TiagoDualArgs.end_effector_right
     end_effector_left: DeclareLaunchArgument = TiagoDualArgs.end_effector_left
     ft_sensor_right: DeclareLaunchArgument = TiagoDualArgs.ft_sensor_right
