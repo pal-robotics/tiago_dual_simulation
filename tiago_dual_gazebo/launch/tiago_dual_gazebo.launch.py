@@ -38,7 +38,7 @@ class LaunchArguments(LaunchArgumentsBase):
     base_type: DeclareLaunchArgument = TiagoDualArgs.base_type
     arm_type_right: DeclareLaunchArgument = TiagoDualArgs.arm_type_right
     arm_type_left: DeclareLaunchArgument = TiagoDualArgs.arm_type_left
-    arm_motor_model: DeclareLaunchArgument = TiagoDualArgs.arm_motor_model
+    arm_motor_model_right: DeclareLaunchArgument = TiagoDualArgs.arm_motor_model_right
     arm_motor_model_left: DeclareLaunchArgument = TiagoDualArgs.arm_motor_model_left
     end_effector_right: DeclareLaunchArgument = TiagoDualArgs.end_effector_right
     end_effector_left: DeclareLaunchArgument = TiagoDualArgs.end_effector_left
@@ -147,6 +147,8 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
             "use_sim_time": LaunchConfiguration("use_sim_time"),
             "arm_type_right": launch_args.arm_type_right,
             "arm_type_left": launch_args.arm_type_left,
+            "arm_motor_model_left": launch_args.arm_motor_model_left,
+            "arm_motor_model_right": launch_args.arm_motor_model_right,
             "end_effector_right": launch_args.end_effector_right,
             "end_effector_left": launch_args.end_effector_left,
             "ft_sensor_right": launch_args.ft_sensor_right,
