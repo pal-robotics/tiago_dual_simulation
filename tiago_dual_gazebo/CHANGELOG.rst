@@ -2,8 +2,8 @@
 Changelog for package tiago_dual_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+4.2.0 (2024-08-26)
+------------------
 * Update parameters
 * Add motor model parameter
 * Contributors: Aina, thomas.peyrucain
