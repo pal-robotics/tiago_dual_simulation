@@ -15,6 +15,7 @@
   <exec_depend>tiago_dual_bringup</exec_depend>
   <exec_depend>tiago_dual_description</exec_depend>
   <exec_depend>tiago_dual_moveit_config</exec_depend>
+  <exec_depend>tiago_dual_2dnav</exec_depend>
   <exec_depend>gazebo_plugins</exec_depend>
   <exec_depend>gazebo_ros</exec_depend>
   <exec_depend>gazebo_ros2_control</exec_depend>
