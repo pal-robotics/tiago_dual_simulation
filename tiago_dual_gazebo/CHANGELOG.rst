@@ -2,6 +2,14 @@
 Changelog for package tiago_dual_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'tpe/add_missing_dependency' into 'humble-devel'
+  Add missing dependecy
+  See merge request robots/tiago_dual_simulation!47
+* Add missing dependecy
+* Contributors: andreacapodacqua, thomas.peyrucain
+
 4.2.0 (2024-08-26)
 ------------------
 * Update parameters
