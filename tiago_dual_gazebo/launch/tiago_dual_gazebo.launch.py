@@ -105,11 +105,12 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
 
     navigation = include_scoped_launch_py_description(
         pkg_name='tiago_dual_2dnav',
-        paths=['launch', 'tiago_dual_sim_nav_bringup.launch.py'],
+        paths=['launch', 'tiago_dual_nav_bringup.launch.py'],
         launch_arguments={
             "robot_name":  robot_name,
             "is_public_sim": launch_args.is_public_sim,
             "laser":  launch_args.laser_model,
+            "base_type": launch_args.base_type,
             'slam': launch_args.slam,
             'world_name': launch_args.world_name,
             'use_sim_time': LaunchConfiguration('use_sim_time'),
