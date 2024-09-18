@@ -2,6 +2,14 @@
 Changelog for package tiago_dual_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'dtk/fix/fix-navigation-launch' into 'humble-devel'
+  Launch correct navigation file and add dependency
+  See merge request robots/tiago_dual_simulation!45
+* Launch correct navigation file and add dependency
+* Contributors: David ter Kuile, antoniobrandi
+
 4.2.1 (2024-09-12)
 ------------------
 * Merge branch 'tpe/add_missing_dependency' into 'humble-devel'
