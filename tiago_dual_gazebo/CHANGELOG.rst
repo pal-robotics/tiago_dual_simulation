@@ -2,8 +2,8 @@
 Changelog for package tiago_dual_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+4.2.2 (2024-09-18)
+------------------
 * Merge branch 'dtk/fix/fix-navigation-launch' into 'humble-devel'
   Launch correct navigation file and add dependency
   See merge request robots/tiago_dual_simulation!45
