@@ -125,6 +125,7 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
         launch_arguments={
             "robot_name": robot_name,
             "use_sim_time": LaunchConfiguration("use_sim_time"),
+            "base_type": launch_args.base_type,
             "arm_type_right": launch_args.arm_type_right,
             "arm_type_left": launch_args.arm_type_left,
             "end_effector_right": launch_args.end_effector_right,
