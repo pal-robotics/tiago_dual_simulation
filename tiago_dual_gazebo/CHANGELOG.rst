@@ -2,8 +2,8 @@
 Changelog for package tiago_dual_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+4.2.3 (2024-11-04)
+------------------
 * Merge branch 'dtk/fix/move-group-base' into 'humble-devel'
   Pass missing base_type to move_group.launch.py
   See merge request robots/tiago_dual_simulation!46
