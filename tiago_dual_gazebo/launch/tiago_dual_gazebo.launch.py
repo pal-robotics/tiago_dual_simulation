@@ -20,7 +20,7 @@ from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument, SetEnvironmentVariable, SetLaunchConfiguration
 
 from launch.conditions import IfCondition
-from launch.substitutions import LaunchConfiguration
+from launch.substitutions import LaunchConfiguration, PythonExpression
 
 from launch_pal.include_utils import include_scoped_launch_py_description
 
@@ -52,6 +52,8 @@ class LaunchArguments(LaunchArgumentsBase):
 
     navigation: DeclareLaunchArgument = CommonArgs.navigation
     slam: DeclareLaunchArgument = CommonArgs.slam
+    advanced_navigation: DeclareLaunchArgument = CommonArgs.advanced_navigation
+    docking: DeclareLaunchArgument = CommonArgs.docking
     moveit: DeclareLaunchArgument = CommonArgs.moveit
     world_name: DeclareLaunchArgument = CommonArgs.world_name
     tuck_arm: DeclareLaunchArgument = CommonArgs.tuck_arm
@@ -112,12 +114,38 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
             "laser":  launch_args.laser_model,
             "base_type": launch_args.base_type,
             'slam': launch_args.slam,
+            'advanced_navigation': launch_args.advanced_navigation,
             'world_name': launch_args.world_name,
             'use_sim_time': LaunchConfiguration('use_sim_time'),
         },
         condition=IfCondition(LaunchConfiguration('navigation')))
 
     launch_description.add_action(navigation)
+
+    advanced_navigation = include_scoped_launch_py_description(
+        pkg_name='tiago_dual_advanced_2dnav',
+        paths=['launch', 'tiago_dual_advanced_nav_bringup.launch.py'],
+        condition=IfCondition(LaunchConfiguration('advanced_navigation')))
+
+    launch_description.add_action(advanced_navigation)
+
+    docking = include_scoped_launch_py_description(
+        pkg_name='tiago_dual_docking',
+        paths=['launch', 'tiago_dual_docking_bringup.launch.py'],
+        condition=IfCondition(
+            PythonExpression(
+                [
+                    "'",
+                    LaunchConfiguration('docking'),
+                    "' == 'True' or '",
+                    LaunchConfiguration('advanced_navigation'),
+                    "' == 'True'"
+                ]
+            )
+        )
+    )
+
+    launch_description.add_action(docking)
 
     move_group = include_scoped_launch_py_description(
         pkg_name='tiago_dual_moveit_config',
