@@ -2,6 +2,15 @@
 Changelog for package tiago_dual_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'abr/feat/docking' into 'humble-devel'
+  use docking arg
+  See merge request robots/tiago_dual_simulation!48
+* always start docking with adv navigation
+* use docking arg
+* Contributors: antoniobrandi
+
 4.2.3 (2024-11-04)
 ------------------
 * Merge branch 'dtk/fix/move-group-base' into 'humble-devel'
