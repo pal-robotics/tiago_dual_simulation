@@ -2,8 +2,8 @@
 Changelog for package tiago_dual_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+4.3.0 (2024-12-02)
+------------------
 * Merge branch 'abr/feat/docking' into 'humble-devel'
   use docking arg
   See merge request robots/tiago_dual_simulation!48
