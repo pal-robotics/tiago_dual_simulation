@@ -2,6 +2,11 @@
 Changelog for package tiago_dual_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* store robot_info in tmp
+* Contributors: antoniobrandi
+
 4.4.0 (2025-04-03)
 ------------------
 * Adopt pal configuration
