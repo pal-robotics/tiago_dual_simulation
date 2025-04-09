@@ -2,6 +2,11 @@
 Changelog for package tiago_dual_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* rviz_config_file for public nav
+* Contributors: salvatorepiccolo
+
 4.5.0 (2025-04-03)
 ------------------
 * store robot_info in tmp
