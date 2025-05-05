@@ -2,6 +2,11 @@
 Changelog for package tiago_dual_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* fix deps
+* Contributors: andreacapodacqua
+
 4.5.1 (2025-04-09)
 ------------------
 * rviz_config_file for public nav
