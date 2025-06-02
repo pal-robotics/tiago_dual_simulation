@@ -268,7 +268,7 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
     robot_name = 'tiago_dual'
     packages = ['tiago_dual_description', 'tiago_description',
                 'pmb2_description', 'pal_hey5_description', 'pal_gripper_description',
-                'pal_robotiq_description']
+                'pal_robotiq_description', 'pal_urdf_utils']
 
     model_path = get_model_paths(packages)
 
