@@ -2,8 +2,8 @@
 Changelog for package tiago_dual_2dnav_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.3.12 (2025-09-15)
+-------------------
 * Merge branch 'tpe/add_velodyne' into 'erbium-devel'
   Tpe/add velodyne
   See merge request robots/tiago_dual_simulation!55
