@@ -10,6 +10,7 @@
   <arg name="laser_model"  default="sick-571"/>
   <arg name="camera_model"  default="orbbec-astra"/>
   <arg name="has_screen"    default="False"/>
+  <arg name="has_velodyne"  default="False"/>
   <arg name="base_type" default="pmb2"/>
 
   <arg name="world"  default="small_office"/>
@@ -43,6 +44,7 @@
       <arg name="ft_sensor_right"  value="$(arg ft_sensor_right)"/>
       <arg name="camera_model" value="$(arg camera_model)"/>
       <arg name="has_screen"  value="$(arg has_screen)"/>
+      <arg name="has_velodyne"  value="$(arg has_velodyne)"/>
       <arg name="gzpose"     value="$(arg gzpose)"/>
       <arg name="tuck_arm"   value="$(arg tuck_arm)"/>
       <arg name="gui"        value="$(arg gzclient)"/>
