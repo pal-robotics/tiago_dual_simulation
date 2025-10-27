@@ -2,6 +2,11 @@
 Changelog for package tiago_dual_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* added missing dep for public sim
+* Contributors: andreacapodacqua
+
 4.8.0 (2025-10-09)
 ------------------
 * added gzclient and rviz args
