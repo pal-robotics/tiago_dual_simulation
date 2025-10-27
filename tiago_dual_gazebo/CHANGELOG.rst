@@ -2,8 +2,8 @@
 Changelog for package tiago_dual_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+4.8.1 (2025-10-27)
+------------------
 * added missing dep for public sim
 * Contributors: andreacapodacqua
 
