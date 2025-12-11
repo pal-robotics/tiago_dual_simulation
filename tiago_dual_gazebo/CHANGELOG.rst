@@ -2,6 +2,11 @@
 Changelog for package tiago_dual_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Point Cloud filter pipeline
+* Contributors: antoniobrandi
+
 4.9.0 (2025-10-28)
 ------------------
 * Revert "Merge branch 'fix/aca/missing-dep-public-sim' into 'humble-devel'"
