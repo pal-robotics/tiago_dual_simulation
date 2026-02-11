@@ -21,6 +21,8 @@
   <exec_depend>gazebo_plugins</exec_depend>
   <exec_depend>gazebo_ros</exec_depend>
   <exec_depend>gazebo_ros2_control</exec_depend>
+  <exec_depend>gz_ros2_control</exec_depend>
+  <exec_depend>gz-sensors6</exec_depend>
   <exec_depend>pal_gazebo_worlds</exec_depend>
   <exec_depend>pal_gazebo_plugins</exec_depend>
   <exec_depend>pal_maps</exec_depend>
@@ -36,6 +38,7 @@
   <test_depend>launch_testing_ament_cmake</test_depend>
   <test_depend>play_motion2_msgs</test_depend>
   <test_depend>rclcpp</test_depend>
+  <exec_depend>ros_gz_bridge</exec_depend>
   <test_depend>sensor_msgs</test_depend>
 
   <export>

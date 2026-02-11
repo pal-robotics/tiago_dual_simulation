@@ -19,6 +19,7 @@ from ament_index_python.packages import get_package_prefix
 from launch import LaunchDescription
 from launch.actions import (
     DeclareLaunchArgument,
+    OpaqueFunction,
     SetEnvironmentVariable,
     SetLaunchConfiguration,
 )
@@ -37,6 +38,8 @@ from launch_pal.robot_arguments import CommonArgs
 from tiago_dual_description.launch_arguments import TiagoDualArgs
 from dataclasses import dataclass
 from launch_pal.actions import CheckPublicSim
+from launch_pal.arg_utils import read_launch_argument
+from launch_pal.conditions import UnlessNodeRunning
 
 
 @dataclass(frozen=True)
@@ -68,6 +71,7 @@ class LaunchArguments(LaunchArgumentsBase):
     namespace: DeclareLaunchArgument = CommonArgs.namespace
     rviz: DeclareLaunchArgument = CommonArgs.rviz
     gzclient: DeclareLaunchArgument = CommonArgs.gzclient
+    gazebo_version: DeclareLaunchArgument = CommonArgs.gazebo_version
 
 
 def generate_launch_description():
@@ -83,6 +87,44 @@ def generate_launch_description():
     return ld
 
 
+def start_gazebo(context, *args, **kwargs):
+    world_name = read_launch_argument('world_name', context)
+    gzclient = read_launch_argument('gzclient', context)
+    gazebo_version = read_launch_argument('gazebo_version', context)
+
+    packages = ['tiago_dual_description', 'tiago_description',
+                'pmb2_description', 'pal_hey5_description', 'pal_gripper_description',
+                'pal_robotiq_description', 'pal_urdf_utils']
+
+    model_path = get_model_paths(packages)
+
+    if gazebo_version == 'gazebo':
+        PATH = 'GZ_SIM_RESOURCE_PATH'
+    else:
+        PATH = 'GAZEBO_MODEL_PATH'
+
+    if PATH in environ:
+        model_path += pathsep + environ[PATH]
+
+    gazebo_model_path_env_var = SetEnvironmentVariable(PATH, model_path)
+
+    gazebo = include_scoped_launch_py_description(
+        pkg_name='pal_gazebo_worlds',
+        paths=['launch', 'pal_gazebo.launch.py'],
+        env_vars=[gazebo_model_path_env_var],
+        launch_arguments={
+            "world_name":  world_name,
+            "model_paths": packages,
+            "resource_paths": packages,
+            "gzclient": gzclient,
+            'gazebo_version': gazebo_version,
+        },
+        condition=UnlessNodeRunning("gazebo")
+    )
+
+    return [gazebo]
+
+
 def declare_actions(launch_description: LaunchDescription, launch_args: LaunchArguments):
 
     # Set use_sim_time to True
@@ -93,28 +135,9 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
     public_sim_check = CheckPublicSim()
     launch_description.add_action(public_sim_check)
 
+    launch_description.add_action(OpaqueFunction(function=start_gazebo))
+
     robot_name = 'tiago_dual'
-    packages = ['tiago_dual_description', 'tiago_description',
-                'pmb2_description', 'pal_hey5_description', 'pal_gripper_description',
-                'pal_robotiq_description', 'pal_urdf_utils']
-
-    model_path = get_model_paths(packages)
-
-    gazebo_model_path_env_var = SetEnvironmentVariable(
-        'GAZEBO_MODEL_PATH', model_path)
-
-    gazebo = include_scoped_launch_py_description(
-        pkg_name='pal_gazebo_worlds',
-        paths=['launch', 'pal_gazebo.launch.py'],
-        env_vars=[gazebo_model_path_env_var],
-        launch_arguments={
-            "world_name":  launch_args.world_name,
-            "model_paths": packages,
-            "resource_paths": packages,
-            "gzclient": launch_args.gzclient,
-        })
-
-    launch_description.add_action(gazebo)
 
     public_navigation_launch = include_scoped_launch_py_description(
         condition=IfCondition(AndSubstitution(
@@ -172,7 +195,11 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
     robot_spawn = include_scoped_launch_py_description(
         pkg_name='tiago_dual_gazebo',
         paths=['launch', 'robot_spawn.launch.py'],
-        launch_arguments={'robot_name': robot_name, })
+        launch_arguments={'robot_name': robot_name,
+                          'base_type': launch_args.base_type,
+                          'gazebo_version': launch_args.gazebo_version,
+                          }
+    )
 
     launch_description.add_action(robot_spawn)
 
@@ -194,7 +221,9 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
             "camera_model": launch_args.camera_model,
             "base_type": launch_args.base_type,
             "has_screen": launch_args.has_screen,
-            "is_public_sim": launch_args.is_public_sim}
+            "is_public_sim": launch_args.is_public_sim,
+            'gazebo_version': launch_args.gazebo_version,
+        }
     )
 
     launch_description.add_action(tiago_bringup)
