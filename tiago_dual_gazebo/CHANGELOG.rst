@@ -2,8 +2,8 @@
 Changelog for package tiago_dual_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+4.11.0 (2026-04-13)
+-------------------
 * Add support for new gazebo
 * Contributors: thomaspeyrucain
 
