@@ -2,6 +2,11 @@
 Changelog for package tiago_dual_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Add support for new gazebo
+* Contributors: thomaspeyrucain
+
 4.10.1 (2025-12-15)
 -------------------
 * missing deps
