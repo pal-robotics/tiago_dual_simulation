@@ -2,6 +2,12 @@
 Changelog for package tiago_dual_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* stores_server log level
+* separate advanced navigation
+* Contributors: antoniobrandi
+
 4.11.0 (2026-04-13)
 -------------------
 * Add support for new gazebo
