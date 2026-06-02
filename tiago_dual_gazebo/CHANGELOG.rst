@@ -2,8 +2,8 @@
 Changelog for package tiago_dual_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+4.12.0 (2026-06-02)
+-------------------
 * stores_server log level
 * separate advanced navigation
 * Contributors: antoniobrandi
