@@ -2,6 +2,11 @@
 Changelog for package tiago_dual_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* start apps using localization manager
+* Contributors: antoniobrandi
+
 4.12.0 (2026-06-02)
 -------------------
 * stores_server log level
